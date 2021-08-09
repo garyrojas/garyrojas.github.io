@@ -1,1 +1,233 @@
-<marquee><b style="color:red">Hello Negrita!</b></marquee>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="language" content="es">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="7wS02e6yfzgIclDrt79BVRQ7hEbUpyD45jRoLGamiao" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gary Rojas</title>
+
+  <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+
+  <style>
+    html, body, div, span, canvas {
+      margin:0;
+      padding:0;
+      font-family: 'Open Sans Condensed', sans-serif;
+    }
+    #container {
+      overflow:hidden;
+      position:relative;
+    }
+    #pixie {
+      z-index:0;
+      background:-o-linear-gradient(top, #040429, #257eb7);
+      background:-ms-linear-gradient(top, #040429, #257eb7);
+      background:-moz-linear-gradient(top, #040429, #257eb7);
+      background:-webkit-linear-gradient(top, #040429, #257eb7);
+      background:linear-gradient(top, #040429, #257eb7);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#040429', EndColorStr='#257eb7');
+      -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr='#040429', EndColorStr='#257eb7')";
+    }
+
+    .title {
+      color: white;
+    }
+    .title h1 {
+      margin: 0;
+    }
+    .certification {
+      width: 152px;
+      float: left;
+    }
+    .github {
+      width: 112px;
+      float: left;
+      padding: 0 23px;
+    }
+    .in {
+      width: 33px;
+      float: left;
+    }
+    .in a {
+      top: 5px;
+      position: relative;
+    }
+    .links-item a img {
+      width: 100%;
+    }
+    .content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+    }
+    .links {
+      float: right;
+      padding: 3px 22px;
+    }
+    .links-item a {
+      width: 100%;
+    }
+    .data {
+      padding: 10px 0 0 23px;
+    }
+  </style>
+</head>
+
+<body>
+<div id="container" style="width: 363px; height: 682px;">
+  <canvas id="pixie" width="363" height="682"></canvas>
+  <div class="content">
+    <div class="data">
+
+      <div class="links">
+        <div class="links-content">
+          <div class="links-item certification">
+            <a target="_blank" href="https://www.credly.com/badges/ac7b4ff1-0412-4147-aba4-0bf452a9618f">
+              <img src="apc.png" >
+            </a>
+          </div>
+
+          <div class="links-item github">
+            <a target="_blank" href="https://github.com/garyrojas">
+              <img src="github.png" >
+            </a>
+          </div>
+
+          <div class="links-item in">
+            <a target="_blank" href="https://www.linkedin.com/feed/">
+              <img src="in.png" >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="title">
+        <h1>GARY ROJAS</h1>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div id="mountains" style="background-position: -509.6px 0px;"></div>
+  <div id="grass" style="background-position: -1267.5px 10px;"></div>
+</div>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript">
+  var WIDTH = window.innerWidth,
+          HEIGHT = window.innerHeight,
+          MAX_PARTICLES = 100,
+          DRAW_INTERVAL = 60,
+          container = document.querySelector('#container'),
+          canvas = document.querySelector('#pixie'),
+          context = canvas.getContext('2d'),
+          gradient = null,
+          pixies = new Array();
+
+  function setDimensions(e) {
+    WIDTH = window.innerWidth;
+    HEIGHT = window.innerHeight;
+    container.style.width = WIDTH+'px';
+    container.style.height = HEIGHT+'px';
+    canvas.width = WIDTH;
+    canvas.height = HEIGHT;
+  }
+  setDimensions();
+  window.addEventListener('resize', setDimensions);
+
+  function Circle() {
+    this.settings = {ttl:8000, xmax:5, ymax:2, rmax:10, rt:1, xdef:960, ydef:540, xdrift:4, ydrift: 4, random:true, blink:true};
+
+    this.reset = function() {
+      this.x = (this.settings.random ? WIDTH*Math.random() : this.settings.xdef);
+      this.y = (this.settings.random ? HEIGHT*Math.random() : this.settings.ydef);
+      this.r = ((this.settings.rmax-1)*Math.random()) + 1;
+      this.dx = (Math.random()*this.settings.xmax) * (Math.random() < .5 ? -1 : 1);
+      this.dy = (Math.random()*this.settings.ymax) * (Math.random() < .5 ? -1 : 1);
+      this.hl = (this.settings.ttl/DRAW_INTERVAL)*(this.r/this.settings.rmax);
+      this.rt = Math.random()*this.hl;
+      this.settings.rt = Math.random()+1;
+      this.stop = Math.random()*.2+.4;
+      this.settings.xdrift *= Math.random() * (Math.random() < .5 ? -1 : 1);
+      this.settings.ydrift *= Math.random() * (Math.random() < .5 ? -1 : 1);
+    }
+
+    this.fade = function() {
+      this.rt += this.settings.rt;
+    }
+
+    this.draw = function() {
+      if(this.settings.blink && (this.rt <= 0 || this.rt >= this.hl)) {
+        this.settings.rt = this.settings.rt*-1;
+      } else if(this.rt >= this.hl) {
+        this.reset();
+      }
+
+      var newo = 1-(this.rt/this.hl);
+      context.beginPath();
+      context.arc(this.x, this.y, this.r, 0, Math.PI*2, true);
+      context.closePath();
+
+      var cr = this.r*newo;
+      gradient = context.createRadialGradient(this.x, this.y, 0, this.x, this.y, (cr <= 0 ? 1 : cr));
+      gradient.addColorStop(0.0, 'rgba(255,255,255,'+newo+')');
+      gradient.addColorStop(this.stop, 'rgba(77,101,181,'+(newo*.6)+')');
+      gradient.addColorStop(1.0, 'rgba(77,101,181,0)');
+      context.fillStyle = gradient;
+      context.fill();
+    }
+
+    this.move = function() {
+      this.x += (this.rt/this.hl)*this.dx;
+      this.y += (this.rt/this.hl)*this.dy;
+      if(this.x > WIDTH || this.x < 0) this.dx *= -1;
+      if(this.y > HEIGHT || this.y < 0) this.dy *= -1;
+    }
+
+    this.getX = function() { return this.x; }
+    this.getY = function() { return this.y; }
+  }
+
+  for (var i = 0; i < MAX_PARTICLES; i++) {
+    pixies.push(new Circle());
+    pixies[i].reset();
+  }
+
+  function draw() {
+    context.clearRect(0, 0, WIDTH, HEIGHT);
+    for(var i = 0; i < pixies.length; i++) {
+      pixies[i].fade();
+      pixies[i].move();
+      pixies[i].draw();
+    }
+  }
+  setInterval(draw, DRAW_INTERVAL);
+
+</script>
+
+</body></html>
